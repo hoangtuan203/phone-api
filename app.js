@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const sequelize = require('./config/db');
 const productRoutes = require('./routes/productRoutes');
-
+const manhdoiRoutes = require('./routes/manhdoiRoutes');
 const app = express();
 
 app.use(cors());
@@ -14,9 +14,9 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/products', productRoutes);
+app.use('/api/manhdoi', manhdoiRoutes);
 
 const PORT = process.env.PORT || 8080;
-
 sequelize.authenticate()
     .then(() => {
         console.log("connected to the database successfully.");
